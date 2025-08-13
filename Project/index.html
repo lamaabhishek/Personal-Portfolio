@@ -1,11 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhishek Lama • Portfolio</title>
+  <meta name="description" content="Personal portfolio of Abhishek Lama — background, projects, skills, and contact." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">
+        <button id="themeToggle" aria-pressed="false" class="icon-btn" title="Toggle theme">🌓</button>
+        <span>Abhishek Lama</span>
+      </div>
+      <button id="menuToggle" class="menu-btn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <progress id="scrollProgress" value="0" max="100" aria-label="Scroll progress"></progress>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="home" aria-label="Intro">
+      <div class="hero-media">
+        <img src="images/portrait.jpg" alt="Abhishek Lama" width="320" height="380" />
+        <div class="badge">Open to Work</div>
+      </div>
+      <div class="hero-content">
+        <h1>Hi, I’m <mark>Abhishek</mark>.</h1>
+        <p class="lead">Recent Information Systems graduate focused on building accessible, fast web apps. I want to learn more about <strong>Java</strong> and modern full‑stack development.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="projects/ABHISHEK_LAMA_RESUME.pdf" target="_blank" rel="noopener">Résumé</a>
+          <button class="btn" id="hireMeBtn" type="button">Hire Me</button>
+          <button class="btn outline" id="printBtn" type="button">Print</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <header class="section-header"><h2>About Me</h2><p class="sub">Background • Interests • Goals</p></header>
+      <article class="about-grid">
+        <div class="card">
+          <h3>Background</h3>
+          <p>Graduated from The University of Texas at Arlington with a B.S. in Information Systems. Experience leading testing ops at CTDI and currently leveling up in a software engineering bootcamp.</p>
+        </div>
+        <div class="card">
+          <h3>Interests & Goals</h3>
+          <ul>
+            <li>Strengthen core <strong>Java</strong> and Spring skills</li>
+            <li>Build clean UIs with HTML, CSS, and JavaScript</li>
+            <li>Ship end‑to‑end projects and improve problem solving</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Experience</h3>
+          <dl class="stats">
+            <div><dt>2025</dt><dd>UTA Graduate • B.S. Information Systems</dd></div>
+            <div><dt>2024–2025</dt><dd>CTDI • Section Head, Functional Test</dd></div>
+            <div><dt>Now</dt><dd>Software Engineering Bootcamp</dd></div>
+          </dl>
+        </div>
+      </article>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <header class="section-header"><h2>Projects</h2><p class="sub">Search, filter, and explore</p></header>
+
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search projects…" aria-label="Search projects">
+        <select id="techFilter" aria-label="Filter by technology">
+          <option value="">All tech</option>
+          <option>HTML</option><option>CSS</option><option>JavaScript</option>
+          <option>Java</option><option>Python</option><option>SQL</option>
+        </select>
+        <select id="sortBy" aria-label="Sort by">
+          <option value="year-desc">Year (new → old)</option>
+          <option value="year-asc">Year (old → new)</option>
+          <option value="name-asc">Name (A → Z)</option>
+          <option value="name-desc">Name (Z → A)</option>
+        </select>
+      </div>
+
+      <ul id="projectGrid" class="project-grid" aria-live="polite"></ul>
+
+      <dialog id="projectDialog" aria-label="Project details">
+        <form method="dialog">
+          <h3 id="dlgTitle">Project Title</h3>
+          <img id="dlgImg" alt="" />
+          <p id="dlgBody">Details here…</p>
+          <menu>
+            <a id="dlgLink" class="btn" href="#" target="_blank" rel="noopener">Open</a>
+            <button class="btn" value="cancel">Close</button>
+          </menu>
+        </form>
+      </dialog>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <header class="section-header"><h2>Skills</h2><p class="sub">Tools & Technologies</p></header>
+      <div class="skills-grid">
+        <div class="skill"><span>Java</span><progress max="100" value="70"></progress></div>
+        <div class="skill"><span>JavaScript</span><progress max="100" value="65"></progress></div>
+        <div class="skill"><span>HTML/CSS</span><progress max="100" value="85"></progress></div>
+        <div class="skill"><span>Python</span><progress max="100" value="60"></progress></div>
+        <div class="skill"><span>SQL</span><progress max="100" value="75"></progress></div>
+        <div class="skill"><span>Tableau</span><progress max="100" value="55"></progress></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <header class="section-header"><h2>Contact</h2><p class="sub">User Feedback & Links</p></header>
+      <form id="contactForm" novalidate>
+        <div class="field split">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+            <small class="error" id="err-name"></small>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            <small class="error" id="err-email"></small>
+          </div>
+        </div>
+
+        <div class="field split">
+          <div>
+            <label for="dob">Date of Birth</label>
+            <input id="dob" name="dob" type="date" required />
+            <small class="error" id="err-dob"></small>
+          </div>
+          <fieldset class="field checkset" aria-label="Select skills you have">
+            <legend>Skills</legend>
+            <label><input type="checkbox" name="skill" value="HTML"> HTML</label>
+            <label><input type="checkbox" name="skill" value="CSS"> CSS</label>
+            <label><input type="checkbox" name="skill" value="JavaScript"> JavaScript</label>
+            <label><input type="checkbox" name="skill" value="Java"> Java</label>
+            <label><input type="checkbox" name="skill" value="Python"> Python</label>
+          </fieldset>
+        </div>
+
+        <div class="field">
+          <label for="message">Message <small id="charCount">(0/500)</small></label>
+          <textarea id="message" name="message" rows="6" maxlength="500" placeholder="Write a short message..." required></textarea>
+          <small class="note">Max 500 characters. Draft autosaves locally.</small>
+          <small class="error" id="err-message"></small>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Send Message</button>
+          <button class="btn" type="reset">Reset</button>
+          <a class="btn outline" href="https://linkedin.com/in/abhisheklama" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn outline" href="https://github.com/lamaabhishek" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Abhishek Lama</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
